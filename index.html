@@ -329,38 +329,90 @@ body::after{content:'';position:fixed;top:-200px;right:-200px;width:1100px;heigh
 /* Admin */
 .admin-screen{background:rgba(9,22,40,0.85);border:1px solid rgba(255,255,255,.07);
   border-radius:20px;padding:1.5rem;margin-top:1rem;backdrop-filter:blur(18px);}
-/* ── ADMIN CARDS ── */
-.admin-cards{display:flex;flex-direction:column;gap:14px;margin-top:.5rem;}
-.admin-card{
-  background:rgba(9,22,40,0.78);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:20px;
-  backdrop-filter:blur(18px);
-  padding:20px 22px;
-  transition:border-color .2s,transform .2s;
-  position:relative;
-}
-.admin-card:hover{border-color:rgba(0,212,255,0.22);transform:translateY(-2px);}
-.admin-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px;}
-.admin-card-name{font-size:1.05rem;font-weight:800;color:var(--text);line-height:1.2;}
-.admin-card-date{font-size:.68rem;color:var(--text-dim);margin-top:3px;}
-.admin-card-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:50px;font-size:.65rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;}
-.admin-card-body{display:grid;grid-template-columns:90px 1fr;gap:18px;align-items:center;}
-.admin-mini-circle{width:90px;height:90px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
-.admin-mini-num{font-size:1.9rem;font-weight:900;color:#fff;line-height:1;}
-.admin-mini-lbl{font-size:.52rem;color:rgba(255,255,255,.7);font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:2px;}
-.admin-dims{display:flex;flex-direction:column;gap:7px;}
-.admin-dim-row{display:grid;grid-template-columns:110px 1fr 40px;align-items:center;gap:8px;}
-.admin-dim-name{font-size:.65rem;color:var(--text-muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.admin-dim-track{height:5px;background:rgba(255,255,255,.07);border-radius:50px;overflow:hidden;}
-.admin-dim-fill{height:100%;border-radius:50px;transition:width .6s ease;}
-.admin-dim-pct{font-size:.62rem;color:var(--text-muted);text-align:right;font-weight:700;}
-.admin-card-del{position:absolute;top:14px;right:14px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#f87171;border-radius:8px;padding:4px 8px;font-size:.72rem;cursor:pointer;transition:background .2s;}
-.admin-card-del:hover{background:rgba(239,68,68,.22);}
-.admin-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
-.admin-stat-box{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;text-align:center;}
-.admin-stat-num{font-size:1.5rem;font-weight:900;background:linear-gradient(90deg,#00d4ff,#7b2fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.admin-stat-lbl{font-size:.62rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;font-weight:600;margin-top:2px;}
+/* ── DASHBOARD ── */
+.db-wrap{max-width:960px;margin:0 auto;padding:1.5rem 1rem 4rem;}
+.db-header{text-align:center;padding:1.2rem 0 1.5rem;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:1.5rem;}
+.db-title{font-size:1.6rem;font-weight:900;background:linear-gradient(90deg,#fff 20%,#00d4ff 60%,#ff8c00 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem;}
+.db-sub{font-size:.75rem;color:var(--text-muted);letter-spacing:.06em;}
+.db-header-actions{display:flex;align-items:center;justify-content:flex-end;gap:.75rem;margin-top:1rem;}
+.db-autosave{display:inline-flex;align-items:center;gap:7px;background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.18);border-radius:10px;padding:7px 14px;font-size:.72rem;color:var(--accent);font-weight:600;margin-bottom:1.2rem;}
+.db-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:1.5rem;}
+@media(max-width:640px){.db-stats{grid-template-columns:repeat(3,1fr);}}
+.db-stat{background:rgba(9,22,40,.75);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:14px 12px;backdrop-filter:blur(16px);}
+.db-stat-num{font-size:1.65rem;font-weight:900;line-height:1;margin-bottom:3px;}
+.db-stat-lbl{font-size:.6rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-weight:600;}
+.db-stat-sub{font-size:.65rem;color:var(--text-dim);margin-top:2px;}
+/* Tabs */
+.db-tabs{display:flex;gap:6px;margin-bottom:1.25rem;background:rgba(9,22,40,.6);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:5px;}
+.db-tab{flex:1;text-align:center;padding:8px 12px;border-radius:10px;font-size:.75rem;font-weight:700;color:var(--text-muted);cursor:pointer;border:none;background:transparent;transition:all .2s;letter-spacing:.03em;}
+.db-tab.active{background:rgba(0,212,255,.12);color:var(--accent);border:1px solid rgba(0,212,255,.22);}
+.db-tab:hover:not(.active){background:rgba(255,255,255,.04);color:var(--text);}
+.db-panel{display:none;}
+.db-panel.active{display:block;}
+/* Charts grid */
+.db-chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+@media(max-width:600px){.db-chart-grid{grid-template-columns:1fr;}}
+.db-chart-box{background:rgba(9,22,40,.75);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:18px 16px;backdrop-filter:blur(16px);}
+.db-chart-title{font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;}
+/* Bar chart (SVG) */
+.db-bar-row{display:grid;grid-template-columns:52px 1fr 36px;align-items:center;gap:8px;margin-bottom:9px;}
+.db-bar-lbl{font-size:.65rem;color:var(--text-muted);text-align:right;}
+.db-bar-track{height:18px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden;position:relative;}
+.db-bar-fill{height:100%;border-radius:6px;transition:width .7s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding-left:8px;}
+.db-bar-pct{font-size:.6rem;font-weight:800;color:rgba(255,255,255,.9);}
+.db-bar-count{font-size:.65rem;color:var(--text-muted);font-weight:700;}
+/* Donut */
+.db-donut-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;}
+.db-donut-svg{overflow:visible;}
+.db-legend{display:flex;flex-direction:column;gap:8px;width:100%;}
+.db-legend-row{display:flex;align-items:center;gap:8px;}
+.db-legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.db-legend-lbl{font-size:.7rem;color:var(--text-muted);flex:1;}
+.db-legend-val{font-size:.7rem;font-weight:800;color:var(--text);}
+/* Dim tab */
+.db-dim-bars{display:flex;flex-direction:column;gap:10px;}
+.db-dim-bar-row{display:grid;grid-template-columns:130px 1fr 44px;align-items:center;gap:10px;}
+.db-dim-bar-lbl{font-size:.72rem;font-weight:700;display:flex;align-items:center;gap:5px;}
+.db-dim-track{height:22px;background:rgba(255,255,255,.06);border-radius:8px;overflow:hidden;}
+.db-dim-fill{height:100%;border-radius:8px;display:flex;align-items:center;padding-left:10px;transition:width .7s ease;}
+.db-dim-num{font-size:.68rem;font-weight:900;color:rgba(255,255,255,.9);}
+.db-dim-pct-lbl{font-size:.72rem;font-weight:800;}
+/* Per-question grid */
+.db-q-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+@media(max-width:700px){.db-q-grid{grid-template-columns:1fr 1fr;}}
+.db-q-card{background:rgba(9,22,40,.75);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px 14px;backdrop-filter:blur(14px);}
+.db-q-num{font-size:.6rem;font-weight:800;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;}
+.db-q-text{font-size:.65rem;color:var(--text-muted);margin-bottom:10px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.db-q-opt{display:grid;grid-template-columns:16px 1fr 28px;align-items:center;gap:5px;margin-bottom:5px;}
+.db-q-letter{font-size:.6rem;font-weight:900;color:var(--text-dim);}
+.db-q-track{height:10px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden;}
+.db-q-fill{height:100%;border-radius:4px;transition:width .6s ease;}
+.db-q-resp{font-size:.6rem;color:var(--text-dim);font-weight:700;text-align:right;}
+.db-q-footer{font-size:.58rem;color:var(--text-dim);margin-top:6px;}
+/* Participants */
+.db-participants{background:rgba(9,22,40,.75);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:18px;backdrop-filter:blur(16px);margin-top:14px;}
+.db-part-hdr{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding-bottom:12px;}
+.db-part-title{font-size:.85rem;font-weight:800;color:var(--text);}
+.db-part-count{font-size:.7rem;color:var(--text-muted);background:rgba(255,255,255,.07);border-radius:6px;padding:2px 8px;}
+.db-part-list{display:flex;flex-direction:column;gap:2px;}
+.db-part-row{display:grid;grid-template-columns:28px 1fr auto 90px 72px 28px;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer;border-radius:8px;transition:background .15s;}
+.db-part-row:hover{background:rgba(255,255,255,.03);}
+.db-part-row:last-child{border-bottom:none;}
+.db-part-num{font-size:.68rem;color:var(--text-dim);font-weight:700;}
+.db-part-name{font-size:.82rem;font-weight:700;color:var(--text);}
+.db-part-score-bar{height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;flex:1;}
+.db-part-score-fill{height:100%;border-radius:2px;}
+.db-part-score-num{font-size:.78rem;font-weight:900;text-align:right;}
+.db-part-badge{font-size:.6rem;font-weight:800;padding:3px 9px;border-radius:50px;text-align:center;text-transform:uppercase;letter-spacing:.05em;}
+.db-part-date{font-size:.62rem;color:var(--text-dim);text-align:right;}
+.db-part-chevron{font-size:.7rem;color:var(--text-dim);transition:transform .2s;}
+.db-part-expand{display:none;padding:10px 4px 6px;}
+.db-part-expand.open{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.db-part-dim-mini{text-align:center;background:rgba(255,255,255,.04);border-radius:10px;padding:8px 4px;}
+.db-part-dim-mini-name{font-size:.55rem;color:var(--text-dim);margin-bottom:4px;line-height:1.3;}
+.db-part-dim-mini-val{font-size:.85rem;font-weight:900;}
+.db-del-btn{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.18);color:#f87171;border-radius:6px;padding:3px 7px;font-size:.65rem;cursor:pointer;transition:background .2s;}
+.db-del-btn:hover{background:rgba(239,68,68,.2);}
 .score-pill{display:inline-block;padding:3px 10px;border-radius:50px;font-weight:700;font-size:.75rem;}
 
 /* Modal */
@@ -552,22 +604,7 @@ body::after{content:'';position:fixed;top:-200px;right:-200px;width:1100px;heigh
 
 <!-- ══ ADMIN ══ -->
 <div class="screen" id="s-admin">
-  <div class="admin-screen">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:.75rem">
-      <div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
-          <div style="width:36px;height:36px;background:linear-gradient(135deg,#00d4ff,#7b2fff);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:900;color:#000;box-shadow:0 0 16px rgba(0,212,255,.35)">Dx</div>
-          <h2 style="font-size:1.2rem;font-weight:900;background:linear-gradient(90deg,#fff,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Panel de Resultados</h2>
-        </div>
-        <p style="font-size:.75rem;color:var(--text-muted);padding-left:46px" id="admin-count">Cargando...</p>
-      </div>
-      <div style="display:flex;gap:.75rem">
-        <button class="btn btn-green" onclick="exportAllCSV()">⬇ Exportar CSV</button>
-        <button class="btn btn-secondary" onclick="goBack()">← Volver</button>
-      </div>
-    </div>
-    <div id="admin-content"></div>
-  </div>
+  <div id="dashboard-root"></div>
 </div>
 
 <!-- ══ MODAL ══ -->
@@ -916,57 +953,229 @@ function toggleMonth(hdr){
 function openAdmin(){
   const records=JSON.parse(localStorage.getItem(STORE_KEY)||'[]');
   const total=records.length;
-  document.getElementById('admin-count').textContent=total?`${total} diagnóstico${total!==1?'s':''} guardado${total!==1?'s':''}`:'Aún no hay diagnósticos guardados';
-  const content=document.getElementById('admin-content');
-  if(!total){content.innerHTML=`<div style="text-align:center;padding:3.5rem;color:var(--text-muted)"><div style="font-size:3.5rem;margin-bottom:1.2rem;opacity:.5">📭</div><p style="font-weight:600">Aún no hay diagnósticos guardados.</p><p style="font-size:.8rem;margin-top:.5rem">Completa el diagnóstico y guarda tu resultado para verlo aquí.</p></div>`;return;}
+  const DIM_COLORS=['#00d4ff','#7b2fff','#f59e0b','#10b981','#ec4899'];
+  const DIM_ICONS=['🌐','🤖','✨','💼','🧠'];
+  const DIM_NAMES=['Ecosistema Digital','IA','Marca y Valor','Estrategia Comercial','Mentalidad'];
   const lc=id=>id==='inicial'?'#ef4444':id==='intermedio'?'#f59e0b':'#10b981';
   const lg=id=>id==='inicial'?'linear-gradient(135deg,#ef4444,#b91c1c)':id==='intermedio'?'linear-gradient(135deg,#f59e0b,#d97706)':'linear-gradient(135deg,#10b981,#059669)';
-  const lvGlow=id=>id==='inicial'?'rgba(239,68,68,.45)':id==='intermedio'?'rgba(245,158,11,.45)':'rgba(16,185,129,.45)';
-  const dimColors=['#00d4ff','#7b2fff','#f59e0b','#10b981','#ec4899'];
-  const dimIcons=['🌐','🤖','✨','💼','🧠'];
-  // Stats
-  const avgScore=Math.round(records.reduce((s,r)=>s+r.score,0)/total);
-  const topScore=Math.max(...records.map(r=>r.score));
-  const niveles={inicial:0,intermedio:0,experto:0};
-  records.forEach(r=>niveles[r.levelId]=(niveles[r.levelId]||0)+1);
-  const topNivel=Object.entries(niveles).sort((a,b)=>b[1]-a[1])[0][0];
-  const statsHTML=`<div class="admin-stats-row">
-    <div class="admin-stat-box"><div class="admin-stat-num">${total}</div><div class="admin-stat-lbl">Diagnósticos</div></div>
-    <div class="admin-stat-box"><div class="admin-stat-num">${avgScore}</div><div class="admin-stat-lbl">Promedio</div></div>
-    <div class="admin-stat-box"><div class="admin-stat-num">${topScore}</div><div class="admin-stat-lbl">Máximo</div></div>
+  const OPT_COLORS=['#ef4444','#f59e0b','#3b82f6','#10b981'];
+  const pct=(n,d)=>d?Math.round(n*100/d):0;
+
+  // ── compute stats ──
+  const avg=total?Math.round(records.reduce((s,r)=>s+r.score,0)/total):0;
+  const lCounts={inicial:0,intermedio:0,experto:0};
+  records.forEach(r=>{lCounts[r.levelId]=(lCounts[r.levelId]||0)+1;});
+
+  // Score buckets: 0-24, 25-49, 50-74, 75-100
+  const BUCK_LABELS=['0–24','25–49','50–74','75–100'];
+  const BUCK_COLORS=['#ef4444','#f59e0b','#3b82f6','#10b981'];
+  const bucks=[0,0,0,0];
+  records.forEach(r=>{const b=r.score<25?0:r.score<50?1:r.score<75?2:3;bucks[b]++;});
+  const maxBuck=Math.max(...bucks,1);
+
+  // Per-dimension averages
+  const dimAvgs=DIM_NAMES.map((_,ci)=>total?Math.round(records.reduce((s,r)=>s+(r.cats?.[ci]?.pct||0),0)/total):0);
+
+  // Per-question distribution
+  const qDist=QS.map((_,qi)=>{
+    const d=[0,0,0,0];
+    records.forEach(r=>{if(r.answers?.[qi]!==undefined)d[r.answers[qi]]++;});
+    return d;
+  });
+
+  // ── donut helper (SVG) ──
+  function donutSVG(slices,colors,size=120,thick=22){
+    const r=(size-thick)/2,circ=2*Math.PI*r,cx=size/2,cy=size/2;
+    const tot=slices.reduce((a,b)=>a+b,0)||1;
+    let offset=0;
+    const paths=slices.map((v,i)=>{
+      const dash=(v/tot)*circ;
+      const gap=circ-dash;
+      const svg=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${colors[i]}" stroke-width="${thick}" stroke-dasharray="${dash.toFixed(2)} ${gap.toFixed(2)}" stroke-dashoffset="${(-offset*circ/tot).toFixed(2)}" style="transform:rotate(-90deg);transform-origin:${cx}px ${cy}px;" opacity="${v?1:0}"/>`;
+      offset+=v;
+      return svg;
+    }).join('');
+    return `<svg width="${size}" height="${size}" class="db-donut-svg">${paths}<circle cx="${cx}" cy="${cy}" r="${r-thick/2-2}" fill="rgba(5,13,31,.9)"/></svg>`;
+  }
+
+  // ── stat boxes ──
+  const statsH=`<div class="db-stats">
+    <div class="db-stat"><div class="db-stat-num" style="color:#fff">${total}</div><div class="db-stat-lbl">Total</div><div class="db-stat-sub">participantes</div></div>
+    <div class="db-stat"><div class="db-stat-num" style="color:#00d4ff">${avg}</div><div class="db-stat-lbl">Promedio</div><div class="db-stat-sub">puntos del grupo</div></div>
+    <div class="db-stat"><div class="db-stat-num" style="color:#ef4444">🔴 ${lCounts.inicial}</div><div class="db-stat-lbl">Inicial</div><div class="db-stat-sub">${pct(lCounts.inicial,total)}% del grupo</div></div>
+    <div class="db-stat"><div class="db-stat-num" style="color:#f59e0b">🟡 ${lCounts.intermedio}</div><div class="db-stat-lbl">Intermedio</div><div class="db-stat-sub">${pct(lCounts.intermedio,total)}% del grupo</div></div>
+    <div class="db-stat"><div class="db-stat-num" style="color:#10b981">🟢 ${lCounts.experto}</div><div class="db-stat-lbl">Experto</div><div class="db-stat-sub">${pct(lCounts.experto,total)}% del grupo</div></div>
   </div>`;
-  const cardsHTML=records.slice().reverse().map(r=>{
-    const color=lc(r.levelId);
-    const grad=lg(r.levelId);
-    const glow=lvGlow(r.levelId);
-    const dimBars=r.cats.map((c,ci)=>`
-      <div class="admin-dim-row">
-        <div class="admin-dim-name" style="color:${dimColors[ci]}">${dimIcons[ci]} ${c.name||['Digital','IA','Marca','Comercial','Mentalidad'][ci]}</div>
-        <div class="admin-dim-track"><div class="admin-dim-fill" style="width:${c.pct}%;background:${dimColors[ci]}"></div></div>
-        <div class="admin-dim-pct" style="color:${dimColors[ci]}">${c.pct}%</div>
-      </div>`).join('');
-    return `<div class="admin-card">
-      <button class="admin-card-del" onclick="deleteRecord(${r.id})" title="Eliminar">🗑</button>
-      <div class="admin-card-top">
-        <div>
-          <div class="admin-card-name">${r.name}</div>
-          <div class="admin-card-date">📅 ${r.date}</div>
-        </div>
-        <div class="admin-card-badge" style="background:${color}18;border:1px solid ${color}35;color:${color}">
-          ${r.levelId==='inicial'?'🔴':r.levelId==='intermedio'?'🟡':'🟢'} ${r.level}
-        </div>
-      </div>
-      <div class="admin-card-body">
-        <div class="admin-mini-circle" style="background:${grad};box-shadow:0 0 32px ${glow}">
-          <div class="admin-mini-num">${r.score}</div>
-          <div class="admin-mini-lbl">/ 100</div>
-        </div>
-        <div class="admin-dims">${dimBars}</div>
+
+  // ── tab: distribución ──
+  const buckBars=BUCK_LABELS.map((lbl,i)=>{
+    const w=pct(bucks[i],maxBuck);
+    const p=pct(bucks[i],total);
+    return `<div class="db-bar-row">
+      <div class="db-bar-lbl">${lbl}</div>
+      <div class="db-bar-track"><div class="db-bar-fill" style="width:${w}%;background:${BUCK_COLORS[i]}"><span class="db-bar-pct">${p?p+'%':''}</span></div></div>
+      <div class="db-bar-count">${bucks[i]}</div>
+    </div>`;
+  }).join('');
+
+  const donutH=donutSVG([lCounts.inicial,lCounts.intermedio,lCounts.experto],['#ef4444','#f59e0b','#10b981']);
+  const legendH=`<div class="db-legend">
+    ${[['Inicial',lCounts.inicial,'#ef4444'],['Intermedio',lCounts.intermedio,'#f59e0b'],['Experto',lCounts.experto,'#10b981']].map(([n,c,col])=>`
+    <div class="db-legend-row"><div class="db-legend-dot" style="background:${col}"></div><div class="db-legend-lbl">${n}</div><div class="db-legend-val" style="color:${col}">${c} <span style="color:var(--text-dim);font-weight:400">(${pct(c,total)}%)</span></div></div>`).join('')}
+  </div>`;
+
+  const distribTab=`<div class="db-chart-grid">
+    <div class="db-chart-box">
+      <div class="db-chart-title">📊 Distribución de puntajes</div>
+      ${buckBars}
+    </div>
+    <div class="db-chart-box">
+      <div class="db-chart-title">🎯 Niveles del grupo</div>
+      <div class="db-donut-wrap">${donutH}${legendH}</div>
+    </div>
+  </div>`;
+
+  // ── tab: por dimensión ──
+  const maxDim=Math.max(...dimAvgs,1);
+  const dimBarsH=DIM_NAMES.map((name,i)=>{
+    const w=pct(dimAvgs[i],100);
+    return `<div class="db-dim-bar-row">
+      <div class="db-dim-bar-lbl" style="color:${DIM_COLORS[i]}">${DIM_ICONS[i]} ${name}</div>
+      <div class="db-dim-track"><div class="db-dim-fill" style="width:${w}%;background:${DIM_COLORS[i]}"><span class="db-dim-num">${w}%</span></div></div>
+      <div class="db-dim-pct-lbl" style="color:${DIM_COLORS[i]}">${dimAvgs[i]}/20</div>
+    </div>`;
+  }).join('');
+
+  const dimMiniDonuts=DIM_NAMES.map((name,i)=>{
+    const avgPct=dimAvgs[i]*5;
+    const dn=donutSVG([avgPct,100-avgPct],[DIM_COLORS[i],'rgba(255,255,255,.07)'],100,18);
+    return `<div class="db-chart-box" style="text-align:center">
+      <div class="db-chart-title">${DIM_ICONS[i]} ${name}</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        ${dn}
+        <div style="font-size:1.3rem;font-weight:900;color:${DIM_COLORS[i]}">${avgPct}%</div>
+        <div style="font-size:.65rem;color:var(--text-dim)">Promedio grupo</div>
       </div>
     </div>`;
   }).join('');
-  content.innerHTML=statsHTML+`<div class="admin-cards">${cardsHTML}</div>`;
+
+  const dimTab=`<div class="db-chart-box" style="margin-bottom:14px">
+    <div class="db-chart-title">📐 Promedio por dimensión</div>
+    <div class="db-dim-bars">${dimBarsH}</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px">
+    ${dimMiniDonuts}
+  </div>`;
+
+  // ── tab: por pregunta ──
+  const OPT_LETTERS=['A','B','C','D'];
+  const qCards=QS.map((q,qi)=>{
+    const d=qDist[qi];
+    const tot2=d.reduce((a,b)=>a+b,0)||1;
+    const maxD=Math.max(...d,1);
+    const bars=d.map((v,oi)=>{
+      const w=pct(v,maxD);
+      return `<div class="db-q-opt">
+        <div class="db-q-letter">${OPT_LETTERS[oi]}</div>
+        <div class="db-q-track"><div class="db-q-fill" style="width:${w}%;background:${OPT_COLORS[oi]}"></div></div>
+        <div class="db-q-resp">${pct(v,tot2)}%</div>
+      </div>`;
+    }).join('');
+    return `<div class="db-q-card">
+      <div class="db-q-num">P${qi+1} · ${q.cat}</div>
+      <div class="db-q-text">${q.q}</div>
+      ${bars}
+      <div class="db-q-footer">${tot2} respuestas</div>
+    </div>`;
+  }).join('');
+
+  const qTab=`<div class="db-q-grid">${qCards}</div>`;
+
+  // ── participants list ──
+  const parts=records.slice().reverse().map((r,i)=>{
+    const color=lc(r.levelId);
+    const grad=lg(r.levelId);
+    const dimMinis=r.cats.map((c,ci)=>`
+      <div class="db-part-dim-mini">
+        <div class="db-part-dim-mini-name" style="color:${DIM_COLORS[ci]}">${DIM_ICONS[ci]}<br>${['Digital','IA','Marca','Comerc.','Mental.'][ci]}</div>
+        <div class="db-part-dim-mini-val" style="color:${DIM_COLORS[ci]}">${c.pct}%</div>
+      </div>`).join('');
+    return `<div>
+      <div class="db-part-row" onclick="togglePartExpand(${r.id})">
+        <div class="db-part-num">${records.length-i}</div>
+        <div class="db-part-name">${r.name}</div>
+        <div style="width:80px;height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden"><div style="height:100%;width:${r.score}%;background:${color};border-radius:2px"></div></div>
+        <div class="db-part-score-num" style="color:${color}">${r.score}</div>
+        <div class="db-part-badge" style="background:${color}18;color:${color};border:1px solid ${color}30">${r.level}</div>
+        <div class="db-part-date">${r.date.split(' ')[0].replace(' de ','/')||r.date}</div>
+      </div>
+      <div class="db-part-expand" id="pe-${r.id}">${dimMinis}
+        <div style="grid-column:1/-1;display:flex;justify-content:flex-end;padding-top:4px">
+          <button class="db-del-btn" onclick="deleteRecord(${r.id})">🗑 Eliminar</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const partsH=`<div class="db-participants">
+    <div class="db-part-hdr" onclick="togglePartList()">
+      <div class="db-part-title">👥 Ver participantes (${total})</div>
+      <div class="db-part-count" id="part-count-lbl">${total} registros ▼</div>
+    </div>
+    <div class="db-part-list" id="part-list">${parts}</div>
+  </div>`;
+
+  // ── empty state ──
+  if(!total){
+    document.getElementById('dashboard-root').innerHTML=`<div class="db-wrap"><div style="text-align:center;padding:4rem 1rem;color:var(--text-muted)"><div style="font-size:4rem;margin-bottom:1rem;opacity:.4">📭</div><p style="font-weight:700;font-size:1rem;margin-bottom:.5rem">Aún no hay diagnósticos</p><p style="font-size:.82rem">Completa el diagnóstico y guarda tu resultado.</p><button class="btn btn-primary" style="margin-top:1.5rem" onclick="goBack()">← Volver al diagnóstico</button></div></div>`;
+    show('s-admin');return;
+  }
+
+  // ── assemble dashboard ──
+  document.getElementById('dashboard-root').innerHTML=`<div class="db-wrap">
+    <div class="db-header">
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:.5rem">
+        <div style="width:38px;height:38px;background:linear-gradient(135deg,#00d4ff,#7b2fff);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:900;color:#000;box-shadow:0 0 20px rgba(0,212,255,.35)">Dx</div>
+        <div class="db-title">Dashboard ICONE Dx.</div>
+      </div>
+      <div class="db-sub">Madurez Digital · Panel de administración</div>
+      <div class="db-header-actions">
+        <div class="db-autosave"><span style="width:7px;height:7px;background:#10b981;border-radius:50%;display:inline-block;animation:blink 2s infinite"></span> Auto-guardado activo</div>
+        <button class="btn btn-green" onclick="exportAllCSV()">⬇ Exportar CSV</button>
+        <button class="btn btn-secondary" onclick="goBack()">← Volver</button>
+      </div>
+    </div>
+    ${statsH}
+    <div class="db-tabs">
+      <button class="db-tab active" onclick="switchTab('distrib',this)">📊 Distribución</button>
+      <button class="db-tab" onclick="switchTab('dim',this)">🧩 Por Dimensión</button>
+      <button class="db-tab" onclick="switchTab('q',this)">❓ Por Pregunta</button>
+    </div>
+    <div id="db-distrib" class="db-panel active">${distribTab}</div>
+    <div id="db-dim" class="db-panel">${dimTab}</div>
+    <div id="db-q" class="db-panel">${qTab}</div>
+    ${partsH}
+  </div>`;
   show('s-admin');
+}
+function switchTab(id,btn){
+  document.querySelectorAll('.db-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.db-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('db-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+function togglePartExpand(id){
+  const el=document.getElementById('pe-'+id);
+  if(!el)return;
+  el.classList.toggle('open');
+}
+function togglePartList(){
+  const list=document.getElementById('part-list');
+  const lbl=document.getElementById('part-count-lbl');
+  if(!list||!lbl)return;
+  const hidden=list.style.display==='none';
+  list.style.display=hidden?'flex':'none';
+  lbl.textContent=hidden?list.querySelectorAll('.db-part-row').length+' registros ▼':'▶ Mostrar';
 }
 function deleteRecord(id){if(!confirm('¿Eliminar este diagnóstico?'))return;const records=JSON.parse(localStorage.getItem(STORE_KEY)||'[]').filter(r=>r.id!==id);localStorage.setItem(STORE_KEY,JSON.stringify(records));openAdmin();}
 function openModal(id){document.getElementById(id).classList.add('open');}
