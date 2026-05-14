@@ -451,8 +451,41 @@ body::after{content:'';position:fixed;top:-200px;right:-200px;width:1100px;heigh
   .res-hero-name{font-size:1.5rem;}
 }
 </style>
+<style>
+.eco-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(5,13,31,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,212,255,.12);font-family:'Inter','Space Grotesk',system-ui,sans-serif}
+.eco-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;gap:24px}
+.eco-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+.eco-logo{width:34px;height:34px;border-radius:7px;filter:drop-shadow(0 0 8px rgba(0,212,255,.35));animation:ecoBreath 4.5s ease-in-out infinite;display:block}
+@keyframes ecoBreath{0%,100%{filter:drop-shadow(0 0 6px rgba(0,212,255,.25));transform:scale(1)}50%{filter:drop-shadow(0 0 14px rgba(0,212,255,.55));transform:scale(1.03)}}
+.eco-brand-name{font-size:15px;font-weight:700;letter-spacing:-.3px;color:#fff}
+.eco-brand-em{color:#00d4ff;font-weight:400}
+.eco-nav{display:flex;align-items:center;gap:4px}
+.eco-link{color:#7986cb;text-decoration:none;font-size:13px;font-weight:500;padding:8px 14px;border-radius:50px;transition:all .2s;font-family:'Inter',system-ui,sans-serif}
+.eco-link:hover{color:#fff;background:rgba(0,212,255,.08)}
+.eco-link.eco-active{color:#fff;background:rgba(0,212,255,.12);border:1px solid rgba(0,212,255,.3)}
+.eco-cta{background:linear-gradient(135deg,#7b2fff,#ff8c00)!important;color:#fff!important;font-weight:700!important;border:none!important}
+.eco-cta:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(123,47,255,.4);color:#fff!important;background:linear-gradient(135deg,#7b2fff,#ff8c00)!important}
+@media(prefers-reduced-motion:reduce){.eco-logo{animation:none}}
+@media(max-width:768px){.eco-inner{padding:10px 14px;gap:10px}.eco-brand-name{display:none}.eco-link{padding:6px 10px;font-size:12px}.eco-cta{padding:7px 14px!important}}
+body{padding-top:62px}
+@media(max-width:768px){body{padding-top:56px}}
+</style>
 </head>
 <body>
+<header class="eco-header">
+  <div class="eco-inner">
+    <a href="https://iconeialabs.com" class="eco-brand">
+      <img src="https://iconeialabs.com/images/icone-logo.png" alt="ICONE ialabs" class="eco-logo">
+      <span class="eco-brand-name">ICONE <span class="eco-brand-em">ialabs</span></span>
+    </a>
+    <nav class="eco-nav">
+      <a href="https://iconeialabs.com"            class="eco-link">Inicio</a>
+      <a href="https://proyectos.iconeialabs.com"   class="eco-link">Estudiantes</a>
+      <a href="https://diagnostico.iconeialabs.com" class="eco-link eco-active">Diagnóstico</a>
+      <a href="https://wa.me/573158940980?text=Hola%20Jorge%2C%20vengo%20del%20ecosistema%20iconeialabs." target="_blank" rel="noopener" class="eco-link eco-cta">Hablemos →</a>
+    </nav>
+  </div>
+</header>
 <canvas id="neural-canvas"></canvas>
 <div class="glow-left"></div>
 <div class="glow-orange"></div>
